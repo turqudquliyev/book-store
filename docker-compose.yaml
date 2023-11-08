@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  book-store:
+    container_name: book-store
+    image: turqudquliyev/book-store:0.0.1
+    ports:
+      - '8888:8888'
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/app_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+      REDIS_SERVER_URL: redis://redis:6379
+    networks:
+      - book_store_network
+
+  postgres:
+    container_name: postgres
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - book_store_network
+
+  redis:
+    container_name: redis
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+    networks:
+      - book_store_network
+
+networks:
+  book_store_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis-data:

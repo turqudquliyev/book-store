@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      REDIS_SERVER_URL: redis://redis:6379
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    container_name: redis
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+
+volumes:
+  postgres_data:
+  redis-data:
