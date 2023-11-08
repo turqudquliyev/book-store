@@ -1,0 +1,15 @@
+jwt:
+  access-token:
+    expiration:
+      time: 15
+  refresh-token:
+    expiration:
+      count: 50
+      time: 21600
+
+crypt:
+  algorithm:
+    message-digest: SHA-256
+    aes: AES
+  token-secret-key: s3cr3t-k3y
+  global-salt: app-global-salt

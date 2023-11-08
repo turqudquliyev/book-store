@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202311061134
+      author: Turqud Quliyev
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: authority
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_roles_users
+                    references: users(id)
+                    nullable: false

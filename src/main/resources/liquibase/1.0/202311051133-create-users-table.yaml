@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202311061133
+      author: Turqud Quliyev
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_account_non_expired
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_account_non_locked
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_credentials_non_expired
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_enabled
+                  type: boolean
+                  constraints:
+                    nullable: false

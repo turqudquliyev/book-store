@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202311061138
+      author: Turqud Quliyev
+      changes:
+        - createTable:
+            tableName: students_authors
+            columns:
+              - column:
+                  name: student_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_students_authors
+                    references: students(id)
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_authors_students
+                    references: authors(id)
+                    nullable: false

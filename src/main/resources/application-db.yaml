@@ -1,0 +1,21 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/app_db
+    username: root
+    password: password
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-master.yaml
+
+redis:
+  server:
+    url: redis://localhost:6379

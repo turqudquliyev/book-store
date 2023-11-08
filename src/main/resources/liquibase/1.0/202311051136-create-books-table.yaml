@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202311061136
+      author: Turqud Quliyev
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: isbn
+                  type: varchar(13)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_books_authors
+                    references: authors(id)
+                    nullable: false
